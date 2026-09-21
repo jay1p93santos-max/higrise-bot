@@ -16,8 +16,7 @@ class Bot(BaseBot):
 
     async def on_whisper(self, user: User, message: str):
         print(f"{user.username} m'a chuchoté: {message}")
-
-from import asyncio
+import asyncio
 from highrise.__main__ import main, BotDefinition
 
 if __name__ == "__main__":
@@ -26,5 +25,3 @@ if __name__ == "__main__":
     definitions = [BotDefinition(Bot(), room_id, token)]
     asyncio.run(main(definitions))
 
-if __
-    m
