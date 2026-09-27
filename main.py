@@ -148,7 +148,7 @@ if __name__ == "__main__":
     from highrise import BotDefinition
 
     definitions = [
-        BotDefinition(Bot(), "6a819ca594613dc3a8816d518c7414777c27170a7b45f45853b0f555e71464b5")
+        BotDefinition(Bot(), "c20c11fa937173a5b0550e71e18c1c0a34b79e6d5a7a8d1eefb7ed65853eb70a")
     ]
 
     asyncio.run(main(definitions))
