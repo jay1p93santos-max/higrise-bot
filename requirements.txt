@@ -1,1 +1,1 @@
-highrise-bot-sdk>=23.0.0
+highrise-bot-sdk
