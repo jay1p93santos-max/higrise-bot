@@ -150,7 +150,7 @@ class Bot(BaseBot):
 
         # --- 8. COMMANDE D'AIDE ---
         elif msg == "!help":
-            await self.highrise.chat("Commandes : 1-350 (danser), '0'/'stop' (arrêter), !tp, !vip @user, vip, !summon @user, !tip all <montant>.")if __name__ == "__main__":
+            await self.highrise.chat("Commandes : 1-350 (danser), '0'/'stop' (arrêter), !tp, !vip @user, vip, !summon @user, !tip all <montant>.") 
     
 
 if __name__ == "__main__":
