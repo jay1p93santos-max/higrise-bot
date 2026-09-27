@@ -152,11 +152,15 @@ class Bot(BaseBot):
         elif msg == "!help":
             await self.highrise.chat("Commandes : 1-350 (danser), '0'/'stop' (arrêter), !tp, !vip @user, vip, !summon @user, !tip all <montant>.") 
 
+
 if __name__ == "__main__":
     import asyncio
     from highrise.__main__ import main
-    
+
     definitions = [
-        {"botDefinition": (Bot(), "6a819ca594613dc3a8816d57", "c20c11fa937173a5b0550e71e18c1c0a34b79e6d5a7a8d1eefb7ed65853eb70a")}
+        (Bot(), "6a819ca594613dc3a8816d57", "c20c11fa937173a5b0550e71e18c1c0a34b79e6d5a7a8d1eefb7ed65853eb70a")}
     ]
+    
     asyncio.run(main(definitions))
+
+
