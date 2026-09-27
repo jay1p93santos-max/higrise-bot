@@ -155,10 +155,9 @@ class Bot(BaseBot):
 if __name__ == "__main__":
     import asyncio
     from highrise.__main__ import main
-    from highrise import BotDefinition
 
     definitions = [
-        BotDefinition(bot=Bot(), room_id="6a819ca594613dc3a8816d57", api_key="C20c11fa937173a5b0550e71e18c1c0a34b79e6d5a7a8d1eefb7ed65853eb70a")
+        (Bot(), "6a819ca594613dc3a8816d57", "C20c11fa937173a5b0550e71e18c1c0a34b79e6d5a7a8d1eefb7ed65853eb70a")
     ]
-    
+
     asyncio.run(main(definitions))
