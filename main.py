@@ -1,27 +1,60 @@
 from highrise import BaseBot, Position
 from highrise.models import User
 
+# Dictionnaire regroupant les émotes (classiques et récentes)
+EMOTES = {
+    # Émotes classiques et populaires
+    "wave": "emote-wave",
+    "dance": "dance-tiktok8",
+    "sing": "idle_singing",
+    "frog": "emote-frog",
+    "pose": "emote-pose1",
+    "laugh": "emote-laughing",
+    "kiss": "emote-kiss",
+    "flex": "emote-flex",
+    "sit": "idle-loop-sitfloor",
+    
+    # Nouvelles et récentes émotes Highrise
+    "zero": "emote-energyball",
+    "think": "emote-confused",
+    "hot": "emote-hot",
+    "curtsy": "emote-curtsy",
+    "bow": "emote-bow",
+    "model": "emote-model",
+    "snake": "emote-snake",
+    "charge": "emote-charge",
+    "wings": "emote-wings",
+    "float": "emote-float",
+    "teleport": "emote-teleporting",
+    "slobber": "emote-slobber",
+    "monster": "emote-monster_fail"
+}
+
 class Bot(BaseBot):
-    async def on_start(self, session_metadata):
-        print("Bot connecté !")
-        await self.highrise.send_whisper(session_metadata.user_id, "Bot allumé ✅")
+    async def on_chat(self, user: User, message: str) -> None:
+        msg = message.lower().strip()
 
-    async def on_user_join(self, user: User, position: Position):
-        print(f"{user.username} a rejoint")
-        await self.highrise.chat(f"Bienvenue {user.username} dans la room ! 🎉")
+        # --- 1. TÉLÉPORTATION ---
+        # Commande : !tp (Téléporte l'utilisateur à des coordonnées précises)
+        if msg == "!tp":
+            try:
+                # Modifie X=5.0, Y=0.0, Z=5.0 selon tes besoins dans la room
+                await self.highrise.teleport(user.id, Position(5.0, 0.0, 5.0))
+                await self.highrise.send_whisper(user.id, "Téléportation réussie !")
+            except Exception as e:
+                print(f"Erreur TP : {e}")
 
-    async def on_chat(self, user: User, message: str):
-        if message.lower().startswith("!hello"):
-            await self.highrise.chat(f"Hello {user.username} !")
+        # --- 2. ÉMOTES PAR COMMANDE (ex: !dance, !wave, !wings) ---
+        elif msg.startswith("!"):
+            emote_name = msg[1:] # Enlève le "!"
+            if emote_name in EMOTES:
+                try:
+                    await self.highrise.send_emote(EMOTES[emote_name], user.id)
+                except Exception as e:
+                    print(f"Erreur emote : {e}")
 
-    async def on_whisper(self, user: User, message: str):
-        print(f"{user.username} m'a chuchoté: {message}")
-import asyncio
-from highrise.__main__ import main, BotDefinition
+        # --- 3. LISTE DES COMMANDES ---
+        elif msg == "!help":
+            await self.highrise.chat("Commandes : !tp, !help ou tapez le nom d'une emote (ex: !dance, !wings, !float, !zero, !kiss)")
 
-if __name__ == "__main__":
-    room_id = "6a819ca594613dc3a8816d57"
-    token = "c20c11fa937173a5b0550e71e18c1c0a34b79e6d5a7a8d1eefb7ed65853eb70a"
-    definitions = [BotDefinition(Bot(), room_id, token)]
-    asyncio.run(main(definitions))
 
