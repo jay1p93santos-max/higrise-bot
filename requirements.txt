@@ -1,1 +1,1 @@
-highrise
+highrise-bot-sdk
