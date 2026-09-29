@@ -144,7 +144,7 @@ class Bot(BaseBot):
 
 if __name__ == "__main__":
     import asyncio
-    from highrise.__main__ import main
+    from highrise.__main__ import main, BotDefinition
     from highrise import BaseBot
 
     definitions = [
