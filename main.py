@@ -143,9 +143,9 @@ class Bot(BaseBot):
             await self.highrise.send_whisper(user.id, "Commandes disponibles : !tp, !help, !setjoin, !addmod, *vipcost ... permanent, 0/stop, et les numéros d'emotes.")
 
 if __name__ == "__main__":
-    import asyncio
-    from highrise.__main__ import main, BotDefinition
+        import asyncio
     from highrise import BaseBot
+    from highrise.__main__ import main, BotDefinition
 
     definitions = [
         BotDefinition(Bot(), "c20c11fa937173a5b0550e71e18c1c0a34b79e6d5a7a8d1eefb7ed65853eb70a")
