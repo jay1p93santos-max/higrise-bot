@@ -149,7 +149,7 @@ if __name__ == "__main__":
 
 
     definitions = [
-        BotDefinition(Bot(), "c20c11fa937173a5b0550e71e18c1c0a34b79e6d5a7a8d1eefb7ed65853eb70a")
-    ]
-
-    asyncio.run(main(definitions))
+        BotDefinition(
+    Bot(), 
+    api_token="c20c11fa937173a5b0550e71e18c1c0a34b79e6d5a7a8d1eefb7ed65853eb70a"
+)
